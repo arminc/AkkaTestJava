@@ -1,12 +1,14 @@
 package com.xebia.messages;
 
-import com.xebia.messages.hash.CalculateHash;
+import com.xebia.messages.hash.CalculateFactorial;
 import com.xebia.messages.time.Time;
+
+import java.util.ArrayList;
 
 public class JavaWay {
 
-    private final long messages = 100000000;
-    CalculateHash hash = new CalculateHash();
+    private final long messages = 1000000;
+    ArrayList list = new ArrayList();
     Time time = new Time();
 
     public static void main(String[] array) {
@@ -15,18 +17,18 @@ public class JavaWay {
 
     private void run() {
         time.start();
-        calculateHash();
+        calculateFactorial();
         time.end();
         printElapsedTime(time);
     }
 
-    private void calculateHash() {
+    private void calculateFactorial() {
         for (int i = 0; i < messages; i++) {
-            hash.calculate("something");
+            list.add(new CalculateFactorial().calculate());
         }
     }
 
     private void printElapsedTime(Time time) {
-        System.out.println(time.elapsedTimeMilliseconds());
+        System.out.println("Done: " + time.elapsedTimeMilliseconds());
     }
 }
